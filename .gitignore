@@ -1,0 +1,4 @@
+venv_v2/
+__pycache__/
+Fraud.csv
+model_state.json

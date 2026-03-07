@@ -1,0 +1,6 @@
+# Bare minimum for the Federated Client
+numpy>=1.26.0
+requests>=2.31.0
+pydantic>=2.6.0
+msgpack>=1.0.0
+loguru>=0.7.0
