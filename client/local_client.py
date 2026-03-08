@@ -129,18 +129,25 @@ class LocalClient:
             self.model.set_parameters(new_w, new_b)
 
         weights, bias = self.model.get_parameters()
+        w_list = Serializer.weights_to_list(weights.flatten())
+        b_val = Serializer.bias_to_float(bias)
+
+        msg_str = str(w_list) + str(b_val)
+
+        signature_bytes = Dilithium2.sign(self.dilithium_sk, msg_str.encode())
 
         payload = {
             "round": round_number,
             "client_id": self.client_id,
             "weights": Serializer.weights_to_list(weights.flatten()),
             "bias": Serializer.bias_to_float(bias),
+            "signature": base64.b64encode(signature_bytes).decode()
         }
 
         # FIX: Point to coordinator_url
         r = requests.post(f"{self.coordinator_url}/submit_update", json=payload)
         r.raise_for_status()
-        print(f"[{self.client_id}] Round {round_number} | Success")
+        print(f"[{self.client_id}] Round {round_number} | Success (Signed)")
 
     def run(self, rounds=5, delay=10):
         for _ in range(rounds):

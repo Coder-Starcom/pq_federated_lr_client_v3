@@ -24,8 +24,8 @@ COORDINATOR_URL = "https://pq-federated-coordinator-v3.onrender.com"
 KEY_MANAGER_URL = "https://pq-federated-key-manager-v3.onrender.com"
 
 # 🚩 INDIVIDUAL CLIENT SETTINGS 🚩
-CLIENT_ID = "pc_node_01"
-MY_DATA_FILE = "client_data_1.csv"
+CLIENT_ID = "pc_node_05"
+MY_DATA_FILE = "client_data_10.csv"
 
 ROUNDS = 5
 LOCAL_EPOCHS = 3
